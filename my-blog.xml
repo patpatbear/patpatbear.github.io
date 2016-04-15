@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+     xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+     xmlns:georss="http://www.georss.org/georss"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:media="http://search.yahoo.com/mrss/"><channel>
+  <title>nil</title>
+  <atom:link href="http://patpatbear.github.io/my-blog.xml" rel="self" type="application/rss+xml" />
+  <link>http://patpatbear.github.io/</link>
+  <description><![CDATA[]]></description>
+  <language>en</language>
+  <pubDate>Fri, 15 Apr 2016 16:16:10 +0800</pubDate>
+  <lastBuildDate>Fri, 15 Apr 2016 16:16:10 +0800</lastBuildDate>
+  <generator>Emacs 25.1 Org-mode 8.3.4</generator>
+  <webMaster>shirong@shirong-VirtualBox (shirong)</webMaster>
+  <image>
+    <url>http://orgmode.org/img/org-mode-unicorn-logo.png</url>
+    <title>nil</title>
+    <link>http://patpatbear.github.io/</link>
+  </image>
+
+  <item>
+    <title>patpatbear's blog</title>
+    <link>http://patpatbear.github.io/my-blog.html#orgheadline1</link>
+    <author>shirong</author>
+    <guid isPermaLink="false">http://patpatbear.github.io/my-blog.html#orgheadline1</guid>
+    <pubDate>Fri, 15 Apr 2016 16:16:00 +0800</pubDate>
+
+    <description><![CDATA[<p>
+    this is the first post of patpatbear's blog
+  </p>
+    ]]></description>
+  </item>
+</channel>
+</rss>
