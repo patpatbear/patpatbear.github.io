@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-16 Sat 13:55 -->
+<!-- 2016-04-15 Fri 20:41 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sitemap for project blog-notes</title>
+<title></title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="patpatbear" />
 <style type="text/css">
@@ -144,25 +144,54 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Sitemap for project blog-notes</h1>
-<ul class="org-ul">
-<li><a href="hello-world.html">2016-04-15 hello-world</a></li>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">hello world</a></li>
+<li><a href="#orgheadline2">this is the second testing</a></li>
 </ul>
 </div>
-<div id="postamble" class="status">
-<p class="postamble">Last Updated 2016-04-16 Sat 13:55 .Created by patpatbear</p>
-          <div id="disqus_thread"></div>
-          <script>
-             var disqus_config = function () {
-             };
-            (function() {
-              var d = document, s = d.createElement('script');
-              s.src = '//patpatbear.disqus.com/embed.js';
-              s.setAttribute('data-timestamp', +new Date());
-             (d.head || d.body).appendChild(s);
-           })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href=
 </div>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">hello world</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+  testing&#x2026;.
+ hhah hah 
+ah ha
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">this is the second testing</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<p>
+hhaa
+hhaa
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="postamble">Last Updated 2016-04-15 Fri 20:41 .Created by patpatbear</p>
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://patpatbear.github.io/1.html';ppp
+        this.page.identifier = 1;
+    };
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//patpatbear.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
 </body>
 </html>

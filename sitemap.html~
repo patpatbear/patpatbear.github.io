@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-15 Fri 20:41 -->
+<!-- 2016-04-15 Fri 22:24 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sitemap for project blog-notes</title>
@@ -150,18 +150,23 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 <div id="postamble" class="status">
-<p class="postamble">Last Updated 2016-04-15 Fri 20:41 .Created by patpatbear</p>
+<p class="postamble">Last Updated 2016-04-15 Fri 22:24 .Created by patpatbear</p>
           <div id="disqus_thread"></div>
-          <script type="text/javascript">
-          var disqus_shortname=patpatbear;
-          (function() {
-                   var dsq = document.createElement('scripte');
-                   dsq.type = 'text/javascript';
-                   dsq.async = true;
-                   dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                   (document.getElementByTagName('head')[0] || document.getElementByTagName('body')[0]).appendChild(dsq);
-                  })();
-          </script>
+ <script>
+    var disqus_config = function () {
+        this.page.url = 'http://patpatbear.github.io/1.html';
+        this.page.identifier = 1;
+    };
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//patpatbear.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href=
 </div>
 </body>
 </html>
