@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> patpatbear's blog</title>
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/css/wrog.css">
+    <link rel="stylesheet" href="/css/wrog.css">
+
+  </head>
+  <body>
+    <div class="nav">
+      <p class="navhdr">This site: </p>
+      <a href="/index.html">Homepage</a><br>
+      <a href="/random-thoughts.html">Random Thoughts</a><br>
+      <a href="/notes.html">Notes</a><br>
+      <a href="/site-map.html">Index</a><br>
+      <a href="/about.html">About</a><br>
+    </div>
+    <div class="footer">
+      <div class="contact">
+	Copyright 2015 patpatbear.<br>
+	<a href="/about.html">About this blog</a>
+      </div>
+    </div>
+   
