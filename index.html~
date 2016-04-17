@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-17 Sun 21:26 -->
+<!-- 2016-04-17 Sun 21:41 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title></title>
@@ -174,11 +174,17 @@ for the JavaScript code in this tag.
 </table>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">patpatbear's blog</h2>
+<h2 id="orgheadline1">patpatbear</h2>
 <div class="outline-text-2" id="text-orgheadline1">
 <p>
-Coming soon&#x2026;
+  This is patpatbear's personal blog, mainly used to record my random
+thoughts, algorithm notes and others alike.
+  Currently i am master in Peking university, about to graduate soon 
+though.
 </p>
+
+
+
 
 <p>
 Copyright 2015 patpatbear. <a href="about.html">About this blog</a>
@@ -187,7 +193,7 @@ Copyright 2015 patpatbear. <a href="about.html">About this blog</a>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="postamble">Last Updated 2016-04-17 Sun 20:15 .Created by patpatbear</p>
+<p class="postamble">Last Updated 2016-04-17 Sun 21:40 .Created by patpatbear</p>
           <div id="disqus_thread"></div>
           <script>
              var disqus_config = function () {
