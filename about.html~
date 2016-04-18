@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-17 Sun 22:59 -->
+<!-- 2016-04-18 Mon 12:34 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title></title>
@@ -143,17 +143,9 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgheadline1">About</a></li>
-</ul>
-</div>
-</div>
 
 <div class="figure">
-<p><img src="./img/coffee-bear-avatar.png" alt="coffee-bear-avatar.png" width="100px" />
+<p><img src="./coffee-bear-avatar.png" alt="coffee-bear-avatar.png" width="100px" />
 </p>
 </div>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" align="center">
@@ -167,20 +159,24 @@ for the JavaScript code in this tag.
 <col  class="org-left" />
 
 <col  class="org-left" />
-
-<col  class="org-left" />
 </colgroup>
 <tbody>
 <tr>
-<td class="org-left"><a href="index.html">Home</a></td>
-<td class="org-left"><a href="blogs/index.html">Blogs</a></td>
-<td class="org-left"><a href="notes/index.html">Notes</a></td>
-<td class="org-left"><a href="sitemap.html">Index</a></td>
-<td class="org-left"><a href="about.html">About</a></td>
+<td class="org-left"><a href="./index.html">Home</a></td>
+<td class="org-left"><a href="./blogs.html">Blogs</a></td>
+<td class="org-left"><a href="./notes.html">Notes</a></td>
+<td class="org-left"><a href="./about.html">About</a></td>
 </tr>
 </tbody>
 </table>
-
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">About</a></li>
+</ul>
+</div>
+</div>
 <div id="outline-container-orgheadline1" class="outline-2">
 <h2 id="orgheadline1">About</h2>
 <div class="outline-text-2" id="text-orgheadline1">
@@ -194,21 +190,6 @@ Copyright 2015 patpatbear. <a href="file:///about.html">About this blog</a>
 </p>
 </div>
 </div>
-</div>
-<div id="postamble" class="status">
-<p class="postamble">Last Updated 2016-04-17 Sun 21:48 .Created by patpatbear</p>
-          <div id="disqus_thread"></div>
-          <script>
-             var disqus_config = function () {
-             };
-            (function() {
-              var d = document, s = d.createElement('script');
-              s.src = '//patpatbear.disqus.com/embed.js';
-              s.setAttribute('data-timestamp', +new Date());
-             (d.head || d.body).appendChild(s);
-           })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </div>
 </body>
 </html>

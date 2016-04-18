@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-17 Sun 22:59 -->
+<!-- 2016-04-18 Mon 12:34 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sitemap for project blog-notes</title>
@@ -145,31 +145,14 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">Sitemap for project blog-notes</h1>
 <ul class="org-ul">
-<li>blogs
-<ul class="org-ul">
-<li><a href="blogs/hello-world.html">2016-04-17</a> hello-world</li>
-<li><a href="blogs/index.html">2016-04-17</a> Posts</li>
-</ul></li>
+<li><a href="header.html">2016-04-18</a> header</li>
+<li><a href="about.html">2016-04-18</a> about</li>
+<li><a href="disqus.html">2016-04-18</a> disqus</li>
+<li><a href="blogs.html">2016-04-18</a> blogs</li>
+<li><a href="notes.html">2016-04-18</a> notes</li>
 <li><a href="footer.html">2016-04-17</a> footer</li>
-<li><a href="about.html">2016-04-17</a> about</li>
 <li><a href="index.html">2016-04-17</a> index</li>
-<li><a href="header.html">2016-04-17</a> header</li>
 </ul>
-</div>
-<div id="postamble" class="status">
-<p class="postamble">Last Updated 2016-04-17 Sun 22:59 .Created by patpatbear</p>
-          <div id="disqus_thread"></div>
-          <script>
-             var disqus_config = function () {
-             };
-            (function() {
-              var d = document, s = d.createElement('script');
-              s.src = '//patpatbear.disqus.com/embed.js';
-              s.setAttribute('data-timestamp', +new Date());
-             (d.head || d.body).appendChild(s);
-           })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </div>
 </body>
 </html>
