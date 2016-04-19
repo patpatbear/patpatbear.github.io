@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-19 Tue 14:38 -->
+<!-- 2016-04-19 Tue 21:37 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title></title>
@@ -177,7 +177,24 @@ for the JavaScript code in this tag.
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#orgheadline1">Random thoughts</a></li>
-<li><a href="#orgheadline2">tools</a></li>
+<li><a href="#orgheadline2">c++ &amp; c</a>
+<ul>
+<li>
+<ul>
+<li><a href="#orgheadline3">what <i>gets(char* buffer)</i> exactly does</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline4">tools</a>
+<ul>
+<li><a href="#orgheadline5">emacs</a>
+<ul>
+<li><a href="#orgheadline6">why emacs breaks hard link</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -186,8 +203,111 @@ for the JavaScript code in this tag.
 <h2 id="orgheadline1">Random thoughts</h2>
 </div>
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">tools</h2>
+<h2 id="orgheadline2">c++ &amp; c</h2>
 <div class="outline-text-2" id="text-orgheadline2">
+</div><div id="outline-container-orgheadline3" class="outline-4">
+<h4 id="orgheadline3">what <i>gets(char* buffer)</i> exactly does</h4>
+<div class="outline-text-4" id="text-orgheadline3">
+<p>
+when testing wheather <i>gets(char* buffer</i> append input to buffer, i used the following code:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+char buffer[100];
+int d;
+
+int main(){
+  buffer = "hello";
+  printf("%s\n",buffer);
+  gets(buffer);
+  printf("%s\n",buffer);
+}
+</pre>
+</div>
+
+<p>
+interestirngly, <i>g++</i> output following message :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++">g++ test.cpp
+test.cpp: In function ‘int main()’:
+test.cpp:8:12: error: incompatible types in assignment of ‘const char [6]’ to ‘char [100]’
+</pre>
+</div>
+
+<p>
+<code>it appears that the g++ treats buffer as char[100] and "hello" as const char [6], 
+    incase you wonder, even if buffer is char[6], it's an invalid assignment</code>
+</p>
+
+<p>
+<b>conclusion 1: string literals can't assigned to string array.</b>
+</p>
+
+<p>
+changing the code to :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++">char buffer[100];
+int d;
+
+int main(){
+  strcpy(buffer,"hello");
+  printf("%s\n",buffer);
+  gets(buffer);
+  printf("%s\n",buffer);
+}
+</pre>
+</div>
+<p>
+with input <i>world</i>, the output of the program is :
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c++">hello
+world
+</pre>
+</div>
+
+<p>
+so, <i>gets</i> does not append to string, instead it writes directly to the buffer.
+</p>
+
+<p>
+<b>conclusion 2: <i>gets</i> does not append, memset before gets is not necessary.</b>
+<b>note: <i>gets</i> return NULL on failure, return str on success</b>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">tools</h2>
+<div class="outline-text-2" id="text-orgheadline4">
+</div><div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">emacs</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+</div><div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6">why emacs breaks hard link</h4>
+<div class="outline-text-4" id="text-orgheadline6">
+<p>
+<b>brief answer: emacs new up a new file when saved (the <i>old-file</i> was to renamed to <i>old-file~</i>)</b>
+</p>
+
+<p>
+hard link is somewhat link a alias to linked target (just link c++ reference ), while soft link is a file that stores the path of linked target (like c++ pointer).
+</p>
+
+<p>
+<b>workaround: use softlink (although file maybe newed up, the filename doesn't changed)</b>
+</p>
+
+
 <p>
 Copyright 2015 patpatbear. <a href="./about.html">About this blog</a>
 </p>
@@ -205,6 +325,8 @@ s.setAttribute('data-timestamp', +new Date());
 <noscript>Please enable JavaScript to view the
  <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
+</div>
+</div>
 </div>
 </div>
 </div>
