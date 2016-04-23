@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-20 Wed 15:48 -->
+<!-- 2016-04-23 Sat 17:21 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title></title>
@@ -222,9 +222,15 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orgheadline15">headers</a></li>
 <li><a href="#orgheadline16">functions</a></li>
+<li><a href="#orgheadline17">others</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline17">io</a></li>
+<li><a href="#orgheadline18">io</a>
+<ul>
+<li><a href="#orgheadline19">best example of handling io : 2564</a></li>
+<li><a href="#orgheadline20">int peekchar()</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -284,6 +290,7 @@ for the JavaScript code in this tag.
 <li>utf-8 is var-length encoding method;</li>
 <li>2030</li>
 <li>1253</li>
+<li>how to tell wheather <i>double a</i> is a integer: <b><i>a == int(a)</i></b></li>
 </ul>
 </div>
 </div>
@@ -292,10 +299,11 @@ for the JavaScript code in this tag.
 <h3 id="orgheadline9">tosolve</h3>
 <div class="outline-text-3" id="text-orgheadline9">
 <ul class="org-ul">
-<li>1166 2089 1863(graph)</li>
+<li>1166 2089 1863(graph) 2066(graph) 2191(dp) 2087(kmp?)</li>
 </ul>
 </div>
 </div>
+
 <div id="outline-container-orgheadline10" class="outline-3">
 <h3 id="orgheadline10">attensions</h3>
 <div class="outline-text-3" id="text-orgheadline10">
@@ -329,11 +337,63 @@ for the JavaScript code in this tag.
 </pre>
 </div>
 <ul class="org-ul">
-<li><b>readlly should read problem thoughly (2072)</b></li>
+<li><b>readlly should read problem thoroughly (2072)</b></li>
+
+<li>printf magic</li>
 </ul>
+<div class="org-src-container">
+
+<pre class="src src-c++">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main(){
+  printf("%d\n", sqrt(4));
+  printf("%lf\n",sqrt(3));
+  printf("%f\n",sqrt(3));
+  double x = sqrt(3.0);
+  printf("%f\n",x);
+  printf("%d\n",sqrt(3));
+  printf("%d\n", sqrt(-1));
+}
+</pre>
+</div>
+<p>
+which outputs:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++">0
+1.732051
+1.732051
+1.732051
+-396866390
+0
+</pre>
+</div>
+
+<p>
+<a href="http://en.cppreference.com/w/c/io/fprintf">printf format reference</a>
+</p>
+
+<p>
+<b><i>printf("%f")</i> &amp; <i>printf("%lf")</i> is the same</b>
+</p>
+
+<p>
+<b><a href="http://en.cppreference.com/w/c/numeric/math/sqrt"><i>sqrt</i></a> is a type generic macro</b>
+</p>
+
+<p>
+<b>printf promotes the float argument to double</b>
+</p>
+
+<p>
+<b>hdu 2091 extra spaces, presentation error!!</b>
+</p>
 </div>
 </div>
 </div>
+
 <div id="outline-container-orgheadline11" class="outline-2">
 <h2 id="orgheadline11">tools</h2>
 <div class="outline-text-2" id="text-orgheadline11">
@@ -367,9 +427,9 @@ for the JavaScript code in this tag.
 <div id="outline-container-orgheadline16" class="outline-4">
 <h4 id="orgheadline16">functions</h4>
 <div class="outline-text-4" id="text-orgheadline16">
-</div><div id="outline-container-orgheadline18" class="outline-5">
-<h5 id="orgheadline18">c read by line:</h5>
-<div class="outline-text-5" id="text-orgheadline18">
+</div><div id="outline-container-orgheadline21" class="outline-5">
+<h5 id="orgheadline21">c read by line:</h5>
+<div class="outline-text-5" id="text-orgheadline21">
 <p>
 1.scanf("%[^\n]",buffer);
 </p>
@@ -379,9 +439,9 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline19" class="outline-5">
-<h5 id="orgheadline19">what did printf("%.1lf",f) do ?</h5>
-<div class="outline-text-5" id="text-orgheadline19">
+<div id="outline-container-orgheadline22" class="outline-5">
+<h5 id="orgheadline22">what did printf("%.1lf",f) do ?</h5>
+<div class="outline-text-5" id="text-orgheadline22">
 <ul class="org-ul">
 <li>prints the round(f)*</li>
 </ul>
@@ -405,38 +465,66 @@ s.setAttribute('data-timestamp', +new Date());
 </noscript>
 </div>
 </div>
-<div id="outline-container-orgheadline20" class="outline-5">
-<h5 id="orgheadline20">scanf ret value</h5>
-<div class="outline-text-5" id="text-orgheadline20">
+<div id="outline-container-orgheadline23" class="outline-5">
+<h5 id="orgheadline23">scanf ret value</h5>
+<div class="outline-text-5" id="text-orgheadline23">
 <p>
 <b>scanf return number of receving arg successfully assigned, or EOF(-1) if read failed before first receiving arg.</b> 
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline21" class="outline-5">
-<h5 id="orgheadline21">peek char in c</h5>
-<div class="outline-text-5" id="text-orgheadline21">
+<div id="outline-container-orgheadline24" class="outline-5">
+<h5 id="orgheadline24">peek char in c</h5>
+<div class="outline-text-5" id="text-orgheadline24">
 <p>
 <b>getchar(equivalent to getc(stdin)) followed by ungetchar</b>
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline22" class="outline-5">
-<h5 id="orgheadline22">careful when dealing with line</h5>
-<div class="outline-text-5" id="text-orgheadline22">
+<div id="outline-container-orgheadline25" class="outline-5">
+<h5 id="orgheadline25">careful when dealing with line</h5>
+<div class="outline-text-5" id="text-orgheadline25">
 <p>
 <i>scanf</i> would eat up '\n', so should readlly be carefull with that.
 </p>
 </div>
 </div>
-</div>
-</div>
 
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="orgheadline17">io</h3>
-<div class="outline-text-3" id="text-orgheadline17">
+<div id="outline-container-orgheadline26" class="outline-5">
+<h5 id="orgheadline26">WTF, abs is not a macro, but fabs is!!</h5>
+<div class="outline-text-5" id="text-orgheadline26">
+<ul class="org-ul">
+<li>stdlib.h : <i>abs</i>, <i>labs</i>, <i>llabs</i> : <i>abs</i> is not a macro;</li>
+<li>math.h: <i>fabs</i>, <i>fabsf</i>, <i>fabsl</i> : <i>fabs</i> is a type-generic macro;</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline27" class="outline-5">
+<h5 id="orgheadline27">note that ceil, sqrt is type=generic macro</h5>
+</div>
+<div id="outline-container-orgheadline28" class="outline-5">
+<h5 id="orgheadline28">1408, some times input is not integer</h5>
+</div>
+</div>
+<div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="orgheadline17">others</h4>
+<div class="outline-text-4" id="text-orgheadline17">
+<ul class="org-ul">
+<li><b><i>int A = n/2, B = (n+1)/3, c = n - A - B;</i> is valid!</b></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="orgheadline18">io</h3>
+<div class="outline-text-3" id="text-orgheadline18">
+</div><div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="orgheadline19">best example of handling io : 2564</h4>
+</div>
+<div id="outline-container-orgheadline20" class="outline-4">
+<h4 id="orgheadline20">int peekchar()</h4>
+<div class="outline-text-4" id="text-orgheadline20">
 <p>
-** int peekchar()
 following is a possible implement of peekchar():
 </p>
 <div class="org-src-container">
@@ -447,6 +535,7 @@ following is a possible implement of peekchar():
    return ret;
 }
 </pre>
+</div>
 </div>
 </div>
 </div>
