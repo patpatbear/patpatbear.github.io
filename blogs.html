@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-23 Sat 17:21 -->
+<!-- 2016-04-27 Wed 21:49 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title></title>
@@ -199,21 +199,23 @@ for the JavaScript code in this tag.
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#orgheadline1">Random thoughts</a></li>
-<li><a href="#orgheadline2">c++ &amp; c</a>
+<li><a href="#orgheadline2">coding</a>
 <ul>
 <li>
 <ul>
 <li><a href="#orgheadline3">what <i>gets(char* buffer)</i> exactly does</a></li>
 <li><a href="#orgheadline4">what HDU 2072 implies</a></li>
+<li><a href="#orgheadline5">comma operator</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline5">tools</a>
+<li><a href="#orgheadline6">tools</a>
 <ul>
-<li><a href="#orgheadline6">emacs</a>
+<li><a href="#orgheadline7">vim</a></li>
+<li><a href="#orgheadline8">emacs</a>
 <ul>
-<li><a href="#orgheadline7">why emacs breaks hard link</a></li>
+<li><a href="#orgheadline9">why emacs breaks hard link</a></li>
 </ul>
 </li>
 </ul>
@@ -225,8 +227,9 @@ for the JavaScript code in this tag.
 <div id="outline-container-orgheadline1" class="outline-2">
 <h2 id="orgheadline1">Random thoughts</h2>
 </div>
+
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">c++ &amp; c</h2>
+<h2 id="orgheadline2">coding</h2>
 <div class="outline-text-2" id="text-orgheadline2">
 </div><div id="outline-container-orgheadline3" class="outline-4">
 <h4 id="orgheadline3">what <i>gets(char* buffer)</i> exactly does</h4>
@@ -344,17 +347,32 @@ obviously i misunderstood the problem. so fixed the problem and got AC.
 </ul>
 </div>
 </div>
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5">comma operator</h4>
+<div class="outline-text-4" id="text-orgheadline5">
+<ul class="org-ul">
+<li><b><i>int A = n/2, B = (n+1)/3, c = n - A - B;</i> is valid!</b></li>
+</ul>
 </div>
-
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5">tools</h2>
-<div class="outline-text-2" id="text-orgheadline5">
-</div><div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">emacs</h3>
-<div class="outline-text-3" id="text-orgheadline6">
-</div><div id="outline-container-orgheadline7" class="outline-4">
-<h4 id="orgheadline7">why emacs breaks hard link</h4>
-<div class="outline-text-4" id="text-orgheadline7">
+</div>
+</div>
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6">tools</h2>
+<div class="outline-text-2" id="text-orgheadline6">
+</div><div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">vim</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<ul class="org-ul">
+<li>indent paste ]p</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">emacs</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+</div><div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9">why emacs breaks hard link</h4>
+<div class="outline-text-4" id="text-orgheadline9">
 <p>
 <b>brief answer: emacs new up a new file when saved (the <i>old-file</i> was to renamed to <i>old-file~</i>)</b>
 </p>
