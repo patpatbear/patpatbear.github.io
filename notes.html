@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-27 Wed 21:49 -->
+<!-- 2016-04-28 Thu 12:59 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title></title>
@@ -250,7 +250,7 @@ for the JavaScript code in this tag.
 <li>input type is not always integer</li>
 <li>EOF and '\n'</li>
 <li>double is not that precise</li>
-<li>INT<sub>MAX</sub> (2147483647), INT<sub>MIN</sub>(-2147483648)</li>
+<li><code>INT_MAX</code> (2147483647), <code>INT_MIN</code> (-2147483648)</li>
 <li>chinese charactor &amp; encoding
 <ul class="org-ul">
 <li>chinese character:gb2312 is compatible with ASCII, where chinese character &lt; 0;</li>
@@ -266,7 +266,7 @@ for the JavaScript code in this tag.
 <h3 id="orgheadline3">numeric</h3>
 <div class="outline-text-3" id="text-orgheadline3">
 <ul class="org-ul">
-<li>problems 1108</li>
+<li>problems: 1108</li>
 <li>gcf lcm</li>
 <li>1 is not prime</li>
 <li>fibonacci grows exponentially, aka super fast</li>
@@ -277,6 +277,7 @@ for the JavaScript code in this tag.
 <h3 id="orgheadline4">recursion</h3>
 <div class="outline-text-3" id="text-orgheadline4">
 <ul class="org-ul">
+<li>problems:</li>
 <li>cuopai</li>
 </ul>
 <div class="org-src-container">
@@ -310,6 +311,7 @@ for the JavaScript code in this tag.
 <h3 id="orgheadline5">geometry</h3>
 <div class="outline-text-3" id="text-orgheadline5">
 <ul class="org-ul">
+<li>problems:</li>
 <li>line can split how many plane at most ?  2050 ?</li>
 <li>compute area: 2036</li>
 </ul>
@@ -319,7 +321,7 @@ for the JavaScript code in this tag.
 <h3 id="orgheadline6">dp</h3>
 <div class="outline-text-3" id="text-orgheadline6">
 <ul class="org-ul">
-<li>1176</li>
+<li>problems: 1176</li>
 </ul>
 </div>
 </div>
@@ -327,7 +329,7 @@ for the JavaScript code in this tag.
 <h3 id="orgheadline7">graph</h3>
 <div class="outline-text-3" id="text-orgheadline7">
 <ul class="org-ul">
-<li>1232 2544 1233 1874 1272</li>
+<li>problems: 1232 2544 1233 1874 1272</li>
 </ul>
 </div>
 </div>
@@ -341,7 +343,7 @@ for the JavaScript code in this tag.
 <h3 id="orgheadline10">data structure</h3>
 <div class="outline-text-3" id="text-orgheadline10">
 <ul class="org-ul">
-<li>1251</li>
+<li>problems: 1251</li>
 </ul>
 </div>
 </div>
@@ -349,7 +351,7 @@ for the JavaScript code in this tag.
 <h3 id="orgheadline11">tosolve</h3>
 <div class="outline-text-3" id="text-orgheadline11">
 <ul class="org-ul">
-<li>1166 2089 1863(graph) 2066(graph) 2191(dp) 2087(kmp?)</li>
+<li>problems: 1166 2089 1863(graph) 2066(graph) 2191(dp) 2087(kmp?)</li>
 </ul>
 </div>
 </div>
@@ -368,7 +370,7 @@ for the JavaScript code in this tag.
 <h4 id="orgheadline15">&lt;math.h&gt;</h4>
 <div class="outline-text-4" id="text-orgheadline15">
 </div><div id="outline-container-orgheadline22" class="outline-5">
-<h5 id="orgheadline22"><i>fabs</i>,/fabsl/,/fabsf/,/fabs/</h5>
+<h5 id="orgheadline22"><i>fabs</i>, <i>fabsl</i>, <i>fabsf</i>, <i>fabs</i></h5>
 <div class="outline-text-5" id="text-orgheadline22">
 <ul class="org-ul">
 <li>type-generic macro, fabsf for float, fabs for double &amp; integer, fabsl for long double.</li>
@@ -377,7 +379,7 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="outline-container-orgheadline23" class="outline-5">
-<h5 id="orgheadline23"><i>ceil</i>,/ceilf/,/ceill/,/ceil/</h5>
+<h5 id="orgheadline23"><i>ceil</i>, <i>ceilf</i>, <i>ceill</i>, <i>ceil</i></h5>
 <div class="outline-text-5" id="text-orgheadline23">
 <ul class="org-ul">
 <li>type-generic macro.</li>
@@ -409,12 +411,7 @@ for the JavaScript code in this tag.
 <h5 id="orgheadline28"><b><i>abs</i></b></h5>
 <div class="outline-text-5" id="text-orgheadline28">
 <ul class="org-ul">
-<li>Note that <i>abs</i> is not a macro, so abs(double) would not return double, in fact <i>fabs</i></li>
-</ul>
-<p>
-shoudle be used.
-</p>
-<ul class="org-ul">
+<li>Note that <i>abs</i> is not a macro, so abs(double) would not return double, in fact <i>fabs</i> shoudle be used.</li>
 <li><i>fabs</i> is defined in math.h</li>
 </ul>
 </div>
@@ -422,9 +419,9 @@ shoudle be used.
 <div id="outline-container-orgheadline29" class="outline-5">
 <h5 id="orgheadline29"><i>qsort</i></h5>
 <div class="outline-text-5" id="text-orgheadline29">
-<p>
-qsort(void* arr, size<sub>t</sub> count, size<sub>t</sub> size, cmp) cmp: int (<b>)(const void</b> pl, const void* pr)
-</p>
+<ul class="org-ul">
+<li>qsort(void* arr, size<sub>t</sub> count, size<sub>t</sub> size, cmp) cmp: int (<b>)(const void</b> pl, const void* pr)</li>
+</ul>
 </div>
 </div>
 </div>
@@ -435,12 +432,29 @@ qsort(void* arr, size<sub>t</sub> count, size<sub>t</sub> size, cmp) cmp: int (<
 <h5 id="orgheadline30"><i>scanf</i></h5>
 <div class="outline-text-5" id="text-orgheadline30">
 <ul class="org-ul">
-<li><b><i>space is useful</i></b></li>
-<li>return value</li>
+<li><p>
+<a href="http://en.cppreference.com/w/c/io/fscanf">format</a>:  %[*(<i>assignment-suppress-character</i>)][integer(<i>maximum-field-width</i>)][/length-modifier/]/conversion-format-specifier/
+</p>
+<ul class="org-ul">
+<li>assignment-suppress-character(*): supress assignment. that is, input-string would be consumed, but would</li>
+</ul>
+<p>
+not be assigned.
+</p>
+
+<ul class="org-ul">
+<li>maximum-field-width: maximum number of character that allowed to consume when doing the conversion.
+note that %s and %[ may lead to overflow if width is not provided.</li>
+
+<li>length-modifier: specify the size of receiving argument.</li>
+</ul></li>
+
+<li><b><i>space is useful</i></b>: space in format string would eat up spaces(' ', '\t','\n','\v'&#x2026;)</li>
+<li>return value: return EOF when end-of-file occured before first assign, return assign count 
+if otherwise.</li>
 </ul>
 </div>
 </div>
-
 
 <div id="outline-container-orgheadline31" class="outline-5">
 <h5 id="orgheadline31"><i>printf</i></h5>
@@ -501,7 +515,7 @@ reads stdin untill newline or EOF, null written to char array and new line disca
 </div>
 </div>
 <div id="outline-container-orgheadline33" class="outline-5">
-<h5 id="orgheadline33"><i>getchar</i>,/getc/</h5>
+<h5 id="orgheadline33"><i>getchar</i>, <i>getc</i></h5>
 <div class="outline-text-5" id="text-orgheadline33">
 <ul class="org-ul">
 <li><p>
