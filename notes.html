@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-04-29 Fri 16:21 -->
+<!-- 2016-05-03 Tue 14:45 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title></title>
@@ -266,8 +266,9 @@ for the JavaScript code in this tag.
 <li>problems: 1408 2564 1880 2072 2549 2030 1253 2072 2026 2019 2027 2023</li>
 <li>Notes: 
 <ul class="org-ul">
-<li>read problem thouroughly</li>
+<li>read problem thouroughly : 1999</li>
 <li>note output format(no extra space, somtimes extrac blank line is needed)</li>
+<li>becareful about loop initiation</li>
 <li>input type is not always integer</li>
 <li>EOF and '\n'</li>
 <li>double is not that precise</li>
@@ -278,22 +279,22 @@ for the JavaScript code in this tag.
 <li>utf-8 is var-length encoding method;</li>
 <li>how to tell wheather <i>double a</i> is a integer: <b><i>a == int(a)</i></b></li>
 </ul></li>
+<li>leap year : (year%4==0 &amp;&amp; year%100!=0) ||(year%400 == 0)</li>
 </ul></li>
 </ul>
 </div>
 </div>
-
 <div id="outline-container-orgheadline3" class="outline-3">
 <h3 id="orgheadline3">Basics</h3>
 <div class="outline-text-3" id="text-orgheadline3">
 <ul class="org-ul">
 <li>simulate</li>
-<li>string</li>
+<li>string: 2203</li>
 <li>division</li>
 <li>sort</li>
 <li>enum</li>
 <li>greedy</li>
-<li>recursion
+<li>recursion: 2067(catalan)
 <ul class="org-ul">
 <li><p>
 cuopai : 
@@ -338,12 +339,18 @@ cuopai :
 <li>1 is not prime</li>
 <li>euler's totient function: totient(x) = x(1-1/p1)(1-1/p2)&#x2026;(1-1/pn), where x = p1*p2*p3&#x2026;*pn;</li>
 </ul></li>
+<li>2067 (catalan)</li>
+<li>1431 prime &amp; print table</li>
+<li>1717 (gcd &amp; decimal to fraction)</li>
+<li>1713 fraction lcm</li>
 </ul></li>
 
 <li>statistics</li>
 <li>permutation &amp; combinition</li>
 <li>high-precision</li>
 <li>game theory</li>
+<li>triangle 2252</li>
+<li>tosolve 1412</li>
 </ul>
 </div>
 </div>
@@ -592,7 +599,10 @@ those two modes.</li>
 </ul></li>
 <li><b>formated input/output</b>
 <ul class="org-ul">
-<li><i>fscanf</i>, <i>scanf</i>, <i>sscanf</i></li>
+<li><i>fscanf</i>, <i>scanf</i>, <i>sscanf</i>
+<ul class="org-ul">
+<li>scanf format is different with printf, "lf" - double* "f" - float* , printf "lf" &amp; "f" means double</li>
+</ul></li>
 <li><i>vscanf</i>, <i>vfscanf</i>, <i>vsscanf</i></li>
 <li><i>printf</i>, <i>fprintf</i>, <i>sprintf</i>, <i>snprintf</i>
 <ul class="org-ul">
