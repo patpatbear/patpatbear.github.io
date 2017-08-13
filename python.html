@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<h1 id="python">python</h1>
+<ul>
+<li>args kwargs</li>
+</ul>
+<p>args: 类似于c语言的va_list, 但是args的类型是tuple kwargs: keyword args</p>
+<p>args必须在kwargs前</p>
+<ul>
+<li><p>@ decorator</p></li>
+<li><p>assert 语法： assert condition, hint (when fail)</p></li>
+<li><p>import 语法：</p></li>
+</ul>
+<p>import的搜索路径? sys.path site-packge是什么意思？ 一般是自己安装的包的默认路径 如何安装一个第三方包？ pip setup import几种不同方式？ import; from a import b as c;</p>
+<ul>
+<li>对象模型</li>
+</ul>
+<p>class A(B):</p>
+<pre><code>class_property_a
+class_property_b
+
+def __init__(self, x, y, z):
+    self.object_property_x = x
+    self.object_property_y = y
+    self.object_property_z = z
+
+def class_method(arga, argb):
+    pass
+
+def object_method(self, arga, argb):
+    pass</code></pre>
+<p>与c#很大不同的是： 1. 在类空间声明的是类属性：类似于c#的static; 2. 对象属性不声明，直接self.object_property_x进行动态添加！ 3. 对象属性只能在__init__中添加 4. 带有self的对向方法，不带self的是类方法</p>
+<ul>
+<li>python的dict的key可以是tuple吗？</li>
+</ul>
+<p>可以, immutable可以作为key；tuple就是immutable</p>
+<ul>
+<li>python的tuple怎么get</li>
+</ul>
+<p>tup1 = ('k1','k2') assert 'k1' == tup1[0] assert 'k2' == tup1[1]</p>
+<ul>
+<li>循环</li>
+</ul>
+<p>python没有foreach</p>
+<p>for k in list: for k,v in list.iteritems(): # python 2.x for k,v in list.items(): # python 3.x</p>
+<ul>
+<li>python debug</li>
+</ul>
+<p>python -m pdb <xxx.py></p>
+<ul>
+<li>字符串</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>格式化语法与c printf语法类似: 'my name is %s and weight is %d kg' % ('srzhao', 70)</li>
+<li>判断是否为空 str.isspace()</li>
+<li>转换为数字 int('1'), fload('1.0')</li>
+</ol>
+<ul>
+<li><p>python-操作符 三元操作符: x if con_true else y</p></li>
+<li><p>python数据结构-dict</p></li>
+</ul>
+<p>dict的key可以是不同类型</p>
+<ul>
+<li><p>python数据结构-str</p></li>
+<li><p>nosetests debug</p></li>
+</ul>
+<p>为什么nosetests需要进行debug？ 主要是因为nosetests是一个框架，如果python -m pdb <test_cases.py> 则不会运行到 setup, teardown, test_xx等函数, 因此需要nosetests 支持pdb调试。</p>
+<p>如何对nosetests进行debug，主要参考资料：man nosetests</p>
+<p>--pdb pdb on error --pdb-failures pdb on failures</p>
+<p>另外如果可以在程序中设断点 A) 使用-s选项让nose不capture stdout 然后： import pdb; pdb.set_trace() B) from nose.tools import set_trace; set_trace() # 该函数会自动设置stdout</p>
+<ul>
+<li>nosetests 日志输出</li>
+</ul>
+<p>nosetests --logging-level=INFO</p>
+<ul>
+<li>ctypes</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>load so</li>
+</ol>
+<p>cdll使用cdecl调用范式，windll使用stdcall范式, oledll使用stdcall范式且预期返回HRESULT。 linux上使用： from ctypes import * cdll.LoadLibrary('libxx.so')</p>
+<ol start="2" style="list-style-type: decimal">
+<li>acess functions</li>
+</ol>
+<p>基本上linux上的calling convention问cdecl，而类似kernel32.GetModuleHandleA 之类的WINDOWS函数为stdcall类型。</p>
+<p>print libxx.<func></p>
+<ol start="3" style="list-style-type: decimal">
+<li>ctypes类型对应</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ctypes type</th>
+<th align="left">C type</th>
+<th align="left">Python type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">c_char</td>
+<td align="left">char</td>
+<td align="left">1-character string</td>
+</tr>
+<tr class="even">
+<td align="left">c_wchar</td>
+<td align="left">wchar_t</td>
+<td align="left">1-character unicode string</td>
+</tr>
+<tr class="odd">
+<td align="left">c_byte</td>
+<td align="left">char</td>
+<td align="left">int/long</td>
+</tr>
+<tr class="even">
+<td align="left">c_ubyte</td>
+<td align="left">unsigned char</td>
+<td align="left">int/long</td>
+</tr>
+<tr class="odd">
+<td align="left">c_short</td>
+<td align="left">short</td>
+<td align="left">int/long</td>
+</tr>
+<tr class="even">
+<td align="left">c_ushort</td>
+<td align="left">unsigned short</td>
+<td align="left">int/long</td>
+</tr>
+<tr class="odd">
+<td align="left">c_int</td>
+<td align="left">int</td>
+<td align="left">int/long</td>
+</tr>
+<tr class="even">
+<td align="left">c_uint</td>
+<td align="left">unsigned int</td>
+<td align="left">int/long</td>
+</tr>
+<tr class="odd">
+<td align="left">c_long</td>
+<td align="left">long</td>
+<td align="left">int/long</td>
+</tr>
+<tr class="even">
+<td align="left">c_ulong</td>
+<td align="left">unsigned long</td>
+<td align="left">int/long</td>
+</tr>
+<tr class="odd">
+<td align="left">c_longlong</td>
+<td align="left"><strong>int64 or long long | int/long | | c_ulonglong | unsigned </strong>int64 or unsigned long long</td>
+<td align="left">int/long</td>
+</tr>
+<tr class="even">
+<td align="left">c_float</td>
+<td align="left">float</td>
+<td align="left">float</td>
+</tr>
+<tr class="odd">
+<td align="left">c_double</td>
+<td align="left">double</td>
+<td align="left">float</td>
+</tr>
+<tr class="even">
+<td align="left">c_char_p</td>
+<td align="left">char * (NUL terminated)</td>
+<td align="left">string or None</td>
+</tr>
+<tr class="odd">
+<td align="left">c_wchar_p</td>
+<td align="left">wchar_t * (NUL terminated)</td>
+<td align="left">unicode or None</td>
+</tr>
+<tr class="even">
+<td align="left">c_void_p</td>
+<td align="left">void *</td>
+<td align="left">int/long or None</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>python ord() chr() unichr()</li>
+</ul>
+</body>
+</html>

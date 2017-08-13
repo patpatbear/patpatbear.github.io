@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<h1 id="网络编程">网络编程</h1>
+<ul>
+<li>套接字</li>
+</ul>
+<p>IPV4 套接字</p>
+<p><netinet/in.h></p>
+<p>struct in_addr { in_addr_t s_addr; }</p>
+<p>struct sockaddr_in { uint8_t sin_len; sa_family_t sin_family; in_port_t sin_port;</p>
+<pre><code>struct in_addr  sin_addr;
+
+char            sin_zero[8];</code></pre>
+<p>}</p>
+<p>通用套接字</p>
+<p><sys/socket.h></p>
+<p>struct sockaddr { uint8_t sa_len; sa_family_t sa_family; char sa_data[14]; }</p>
+<p>IPV6套接字 <netinet/in.h></p>
+<p>struct in6_addr { uint8_t s6_addr[16]; }</p>
+<h1 id="define-sin6_len">define SIN6_LEN</h1>
+<p>struct sockaddr_in6 { uint8_t sin6_len; sa_family_t sin6_family; in_port_t sin6_port;</p>
+<pre><code>uint32_t        sin6_flowinfo;
+struct in6_addr sin6_addr;
+
+uint32_t        sin6_scope_id;</code></pre>
+<p>}</p>
+<ul>
+<li>字节序</li>
+</ul>
+<p>网络字节序为小端</p>
+<p><netinet/in.h> uint16_t htons(uint16_t host16bitvalue); uint32_t htonl(uint32_t host32bitvalue); uint16_t ntohs(uint16_t net16bitvalue); uint32_t ntohl(uint32_t net32bitvalue);</p>
+<ul>
+<li>地址转换</li>
+</ul>
+<p><arpa/inet.h> int inet_aton(const char <em>str, struct in_addr </em>addr); //返回bool in_addr_t inet_addr(const char <em>str); //如果无效返回INADDR_NONE,INADDR_NONE为255.255.255.255为广播地址（该函数被废弃） char </em>inet_ntoa(struct in_addr inaddr); //返回值为静态内存，该函数不可重入</p>
+<p>int inet_pton(int family, const char <em>str, void </em>addr);//1-正常；0-无效；-1出错 const char <em>inet_ntop(int family, const void </em>addr, char *str, size_t len);// <netinet/in.h> #define INET_ADDRSTRLEN 16 #define INET6_ADDRSTRLEN 46</p>
+<ul>
+<li>关于select poll epoll</li>
+</ul>
+<p>材料： https://daniel.haxx.se/docs/poll-vs-select.html(libcurl作者的比较） Comparing and Evaluating epoll, select, and poll Event Mechanisms(65, 2004 ols2004) http://stackoverflow.com/questions/4093185/whats-the-difference-between-epoll-poll-threadpool 199 http://stackoverflow.com/questions/17355593/why-is-epoll-faster-than-select 58 http://stackoverflow.com/questions/4039832/select-vs-poll-vs-epoll 32 man page http://man7.org/linux/man-pages/man2/select.2.html apue unp</p>
+<p>库； libev，libevent, libuv</p>
+<p>应用： twemproxy redis memcached libcurl axel</p>
+<ul>
+<li><p>抓包 tcpdump =======</p></li>
+<li><p>抓包 tcpdump tcpdump -i eno1 -XX host 172.20.51.159</p></li>
+<li><p>发送</p></li>
+<li><p>nc</p></li>
+<li><p>非阻塞 connect， close， shutdown， accept connect: 立即返回EINPROGRESS，三步握手继续进行；值得注意的是如果是在C/S在同一个机器，那么通常立即返回，而不是EINPROGRES。</p></li>
+</ul>
+<p>tools http://stackoverflow.com/questions/4777042/can-i-use-tcpdump-to-get-http-requests-response-header-and-response-body wireshark for capturing http request tcp [like wireshark but command line] http debug proxy charles and fiddler firebug let you see the parsed request telnet netcat socat connect directly to 80, and mannualy construct request htty help construct a request and inspect the response</p>
+<p>关于链路状态的保持： - 链路出错了怎么办？链路随时出错怎么办？ - EINTER? EINPROGRESS? EPOLLERR? EPOLLHUP? - connect, close, accept与非阻塞 - twemproxy如何做到auto-eject？（也就是服务端自动隔离）</p>
+<p>twemproxy的链路操作总结： 1. EPOLLERR, : epoll删除fd资源 对于proxy，直接close 对于server, 直接close并且释放相应的msg资源；但是并不会立即剔除svr；下次再来请求还是会 进行connect 对于client, 直接清除资源，close</p>
+<ol start="2" style="list-style-type: decimal">
+<li>server_connect: socket set_nonblock event_addcon connect（一般这个时候，都是EINPROGRESS） 成功之后，epoll, select, poll会有写事件！(make sense)</li>
+</ol>
+<table>
+<col width="6%" />
+<tbody>
+<tr class="odd">
+<td align="left">about close/shutdown/FIN/reset</td>
+</tr>
+<tr class="even">
+<td align="left">shutdown SHUT_RD, the kernel protocol stack really send no (FIN) packets!!</td>
+</tr>
+<tr class="odd">
+<td align="left">- shutdown SHUT_RD, will cause block recv to return 0 (logically closed by peer, but discards ongoing msg). on linux, we could still recv from peer, but would not block; on windows or AIX, behavior is different; to summarize the behavior: recv would return 0 instantly, and we should not recv from the connection from now on.</td>
+</tr>
+<tr class="even">
+<td align="left">- connect, start the 3-way handshake (processed by tcp/ip stack) - accept, get on connection from backlog, block if none (FIN+ACK is not triggered by connect)</td>
+</tr>
+<tr class="odd">
+<td align="left">- shut_r: local recv return 0; remote can still send - shut_w: local send got sigpipe; remote recv return 0 - close: sigpipe on local and peer; unlike connect, usually close return immediately (while closing in backgroud by kernel) unless so_linger set</td>
+</tr>
+</tbody>
+</table>
+<p>for non-blocking network io</p>
+<ul>
+<li>connect: E_INPROGRESS, EAGAIN(no avaliable port)</li>
+<li>close:</li>
+<li>accept: EAGAIN, ENOFILE, EMFILE</li>
+<li>read, recv, recvfrom, recvmsg: EAGAIN</li>
+<li>write, send, sendmsg, writev: EAGAIN</li>
+</ul>
+<p>connect &amp; close normall would not block, cause kernel tcp/ip stack run in backgroud</p>
+</body>
+</html>

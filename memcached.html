@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<h1 id="memcached">memcached</h1>
+<p>high-performance (k,v) mem storage, designed to use as cache.</p>
+<p>every (k,v) is called an item in mc.</p>
+<p>main data struture:</p>
+<p>item: (k,v) in memcached slabs: slabs sub system hash: item index lru: lru queue</p>
+<table>
+<col width="8%" />
+<thead>
+<tr class="header">
+<th align="left">item ITEM_SLABBED : item not used but alloced in slabs, aka free in slabs ITEM_CHUNK : item chunk data ITEM_CHUNKED : item chunk head ITEM_FETCHED : item accessed at least once after set, i.e. item active ITEM_LINKED : item linked into lru queue and hash item state trans: ITEM_SLABBED -&gt;<br />ITEM_CHUNK -&gt;<br />ITEM_CHUNKED -&gt;<br />ITEM_FETCHED -&gt;<br />ITEM_LINKED -&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">slabs</td>
+</tr>
+<tr class="even">
+<td align="left">slabs module: slabsclass[64]: slots[]: slab_list[]:</td>
+</tr>
+<tr class="odd">
+<td align="left">rebalance</td>
+</tr>
+<tr class="even">
+<td align="left">thread wait for rebalance signal on init, wait for <code>slab_reassaign</code> ;</td>
+</tr>
+<tr class="odd">
+<td align="left">client command <code>slabs reassign &lt;src&gt; &lt;dst&gt;</code> or eviction when automove=2 or lru_maintain when automove=1;</td>
+</tr>
+<tr class="even">
+<td align="left">start reassign process if slabs &gt; 2;</td>
+</tr>
+</tbody>
+</table>
+<p>hash</p>
+<p>init rehash</p>
+<hr />
+<p>lru</p>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+</head>
+<body>
+<h1 id="udp">udp</h1>
+<p>udp无连接，不可靠。</p>
+<p>典型应用：DNS, NFS, SNMP</p>
+<p>基本的API包括</p>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="ot">#include &lt;sys/socket.h&gt;</span>
+
+ssize_t recvfrom(<span class="dt">int</span> sd, <span class="dt">void</span> *buff, size_t nbytes, <span class="dt">int</span> flags,
+    <span class="kw">struct</span> sockaddr *from, socklent_t *addrlen);
+
+ssize_t sendto(<span class="dt">int</span> sd, <span class="dt">const</span> <span class="dt">void</span> *buff, size_t nbytes, <span class="dt">int</span> flags,
+    <span class="dt">const</span> <span class="kw">struct</span> sockaddr *to, sockelen_t addrlen);</code></pre>
+<ul>
+<li>UDP可以写一个报文长度为0的报文。</li>
+</ul>
+<h2 id="misc">misc</h2>
+<ul>
+<li>已连接udp套接字</li>
+</ul>
+<p>对于已连接udp套接字与默认的未连接udp套接字相比： 1. 不能指定目的地址:不能使用sendto，必须使用send或者write （其实也可以使用sendto函数, 但是不能指定目的地址）</p>
+<p>2.不必使用recvfrom获取源地址（因为内核只返回只有connect指定地址的数据包）</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>UDP套接字引发的一步错误会返回给他们所在的进程</p></li>
+<li><p>已连接套接字比未连接套接字的效率更高</p></li>
+</ol>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<ul>
+<li><p>关于typedef和struct 参考回答：http://stackoverflow.com/questions/252780/why-should-we-typedef-a-struct-so-often-in-c</p></li>
+<li><p>remove trailing '' (fgets) buf[strcspn(buf, '')] = 0;</p></li>
+<li><p>strdup &amp; strdupa 比 malloc;strcpy 更简洁</p></li>
+<li><p>extern IS OPTIONAL on function</p></li>
+<li><p>uint32_t defined in stdint.h</p></li>
+<li><p>size_t defined in stddef.h</p></li>
+<li><p>strspn(const char <em>s, const char </em>accept); 找到s中全由accept中字符组成的连续长度</p></li>
+<li><p>strtok split string</p></li>
+<li><p>strpbrk - search a string for any of a set of bytes</p></li>
+<li><p>goto label, label only have function scope</p></li>
+<li><p>restrict c99 keyword, intend for compiler, its' programmer promise of elimiating pointer aliasing</p></li>
+</ul>
+<h2 id="一些疑问">一些疑问</h2>
+<ul>
+<li>malloc 失败是否需要返回判断错误，打印消息，并且处理该错误？</li>
+</ul>
+<p>libevent 不处理，只打印消息。</p>
+<p>我觉得, 既然malloc失败了（也就是OOM）,这个时候程序只能退出！区别在于退出的姿势，是主动退出呢？还是core掉。 从友好性来讲，应该主动退出; 但是core掉应该也是没有啥问题的吧。</p>
+<ul>
+<li>如何将vim和gdb结合起来</li>
+</ul>
+<p>不结合比较简单，出问题应该主要从log判断</p>
+<p>======= * time <time.h></p>
+<h3 id="time_t-精卻倒s的時間">time_t 精卻倒s的時間</h3>
+<p>time_t - c standard did't specify the time_t, but almost implementations define it as int - seconds from epoch, it may fail on 2038. time_t time(time_t *arg);</p>
+<h3 id="clock-通常用来统计进程使用的cpu时间">clock 通常用来统计进程使用的cpu时间</h3>
+<p>clock_t - representing the processor time used by a process. clock_t clock(void); CLOCKS_PER_SEC</p>
+<p>NOTE 统计进程使用的时间clock_gettime的精度更好 http://en.cppreference.com/w/c/chrono/clock</p>
+<p>struct timespec { time_t tv_sec; /* seconds <em>/ long tv_nsec; /</em> nanoseconds */ };</p>
+<p>int clock_gettime(clockid_t clock_id, struct timespec *tp); CLOCK_PROCESS_CPUTIME_ID</p>
+<h3 id="timespec">timespec</h3>
+<p>int timespec_get( struct timespec <em>ts, int base) #define TIME_UTC /</em> implementation defined */</p>
+<h3 id="conversion">conversion</h3>
+<ol style="list-style-type: decimal">
+<li><p>tm -&gt; ascii char* asctime( const struct tm* time_ptr ); errno_t asctime_s(char <em>buf, rsize_t bufsz, const struct tm </em>time_ptr);</p></li>
+<li><p>time_t -&gt; tm struct tm <em>localtime( const time_t </em>time ); struct tm <em>localtime_s(const time_t </em>restrict time, struct tm *restrict result);</p></li>
+<li><p>time_t -&gt; ascii char* ctime( const time_t* time ); errno_t ctime_s(char <em>buffer, rsize_t bufsz, const time_t </em>time);</p></li>
+<li><p>time_t -&gt; tm struct tm <em>gmtime( const time_t </em>time ); struct tm <em>gmtime_s(const time_t </em>restrict time, struct tm *restrict result);</p></li>
+<li><p>tm -&gt; time_t time_t mktime( struct tm *time );</p></li>
+</ol>
+<p>总结:这么多的时间，都没有精度高的calender time</p>
+<p><sys/time.h> struct timeval { time_t tv_sec; /* seconds <em>/ suseconds_t tv_usec; /</em> microseconds */ };</p>
+<p>int gettimeofday(struct timeval <em>tv, struct timezone </em>tz); 能获取us精度的时间，但是注意这个时间是可以被系统管理员修改的！</p>
+<p><time.h> int clock_gettime(clockid_t clk_id, struct timespec *tp); CLOCK_MONOTONIC</p>
+<p>能够获取us精度的时间，这个时间不会被修改</p>
+<ul>
+<li><p>does it make sense to strncpy(dst, src, strlen(src) + 1) ????</p></li>
+<li><p>ansi c boolean type is int</p></li>
+<li><p>snprintf(char <em>buf, size_t size, const char </em>format, ...) 是一个复杂的函数:</p></li>
+</ul>
+<p>几个问题：</p>
+<ol style="list-style-type: decimal">
+<li>是不是snprintf之后buf总是null-terminated?</li>
+</ol>
+<p>如果size &gt; 0； 如果size = 0不会对buf有任何操作</p>
+<p>linux平台的snprintf总是null-terminated的;windows平台只有_snprintf，不是null-terminated</p>
+<ol start="2" style="list-style-type: decimal">
+<li>返回值的含义？</li>
+</ol>
+<p>表示如果buf足够大，encode到buf的字符数（不包括)</p>
+<p>注意，如果被truncated，返回值可能与一些programmer预期的结果不一致，因此另外一个函数</p>
+<p>_scnprintf(char <em>buf, size_t size, const char </em>format, ...)</p>
+<p><em>scnprintf与snprintf的行为一致，除了</em>scnprintf返回的是真正写入到buf的字节数（不包括)</p>
+<ol start="3" style="list-style-type: decimal">
+<li>如何判断被truncated</li>
+</ol>
+<p>返回值 &gt;= size</p>
+<ol start="4" style="list-style-type: decimal">
+<li>示意例程： ```</li>
+</ol>
+<h1 id="include">include <stdio.h></h1>
+<p>int main() { char buf[5]; int ret;</p>
+<pre><code>ret = snprintf(buf, sizeof(buf), &quot;%s&quot;, &quot;hello&quot;);
+
+printf(&quot;%d: %s\n&quot;, ret, buf);
+
+return 0;</code></pre>
+<p>}</p>
+<pre><code>输出
+</code></pre>
+<p>5 hell ```</p>
+<ul>
+<li>char <em>strncpy(char </em>dst, const char *src, size_t n)</li>
+</ul>
+<p>是不是dst总是null-terminated?</p>
+<p>NO！ 如果src的前n个字节没有，dst将不是null-terminated (c string). &gt;&gt;&gt;&gt;&gt;&gt;&gt; e8cfc83926167c3fc0ecbcebc23cf4c258b44ac1</p>
+</body>
+</html>

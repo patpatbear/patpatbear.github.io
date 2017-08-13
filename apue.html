@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<ul>
+<li><p>locale</p>
+<h1>include <locale.h></h1>
+<p>char <em>setlocale(int category, const char </em>locale) locale == &quot;&quot;, set according to ENV locale == NULL, query current</p>
+<p>setlocale(LC_ALL, &quot;&quot;); //program made portable</p></li>
+</ul>
+<h1 id="apue">apue</h1>
+<ul>
+<li>pipe(int fd[2]) fd0, fd1分别是pipe的读写端。</li>
+<li>isatty 判断fd是否指向一个terminal，可用于判断是否进行了pipe或者redirect</li>
+<li><p>窗口大小：</p></li>
+<li><p>文件与目录 判断文件存在 文件大小 文件读取 文件写入</p></li>
+<li><p>option</p></li>
+</ul>
+<p>struct option { char <em>name; int has_arg; int </em>flag; int val; }</p>
+<p>extern char *optarg; extern int optind, opterr, optopt;</p>
+<p>int getopt_long(int argc, char **argv, char <em>lopts, option </em>lopts, int *longindex);</p>
+<p>如果选项合法，返回选项 如果选项不合法，返回 '?'</p>
+</body>
+</html>
